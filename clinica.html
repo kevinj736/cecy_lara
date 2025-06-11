@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clínica Vida Sana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f0f4f8;
+    }
+
+    header {
+      background-color: #2d6a4f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #40916c;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2d6a4f;
+    }
+
+    .imc-form input {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .imc-form button {
+      background-color: #2d6a4f;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .imc-form button:hover {
+      background-color: #1b4332;
+    }
+
+    footer {
+      background-color: #2d6a4f;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    
+    .contenido-con-imagen {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contenido-con-imagen img {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .contenido-con-imagen p,
+    .contenido-con-imagen ul {
+      flex: 1;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Clínica Vida Sana</h1>
+    <p>Nutrición y Fitness para una Vida Saludable</p>
+  </header>
+
+  <nav>
+    <a href="#presentacion">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#consejos">Consejos</a>
+    <a href="#imc">Calculadora IMC</a>
+  </nav>
+
+  <section id="presentacion">
+    <h2>Bienvenidos</h2>
+    
+      <img src="logo_nutricion.jpg" alt="Logo Clínica">
+      <p>En Clínica Sanitos y Sanitas te ayudamos a alcanzar tus objetivos de salud a través de planes personalizados de nutrición y programas de entrenamiento físico.</p>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="contenido-con-imagen">
+      <img src="meeting.jpg" alt="Servicios">
+      <ul>
+        <li>Evaluación nutricional personalizada</li>
+        <li>Planes alimenticios a medida</li>
+        <li>Entrenamiento funcional y de fuerza</li>
+        <li>Consultas virtuales y presenciales</li>
+        <li>Seguimiento de progreso</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="consejos">
+    <h2>Consejos de Vida Fitness</h2>
+    <div class="contenido-con-imagen">
+      <img src="agua.jpg" alt="Consejos fitness">
+      <ul>
+        <li>Hidrátate adecuadamente todos los días.</li>
+        <li>Incluye frutas y verduras en cada comida.</li>
+        <li>Realiza al menos 30 minutos de actividad física diaria.</li>
+        <li>Duerme al menos 7-8 horas cada noche.</li>
+        <li>Mantén una actitud positiva hacia tu salud.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="imc">
+    <h2>Calculadora de IMC</h2>
+    <p>Introduce tu peso y estatura para conocer tu Índice de Masa Corporal (IMC):</p>
+    <div class="imc-form">
+      <input type="number" id="peso" placeholder="Peso en kilogramos (kg)">
+      <input type="number" id="altura" placeholder="Estatura en metros (m)">
+      <button onclick="calcularIMC()">Calcular IMC</button>
+      <p id="resultadoIMC"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>404 Lara Silis Kevin Josue. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById('peso').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+      const resultado = document.getElementById('resultadoIMC');
+
+      if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+        resultado.textContent = 'Por favor, ingresa valores válidos.';
+        return;
+      }
+
+      const imc = peso / (altura * altura);
+      let clasificacion = '';
+
+      if (imc < 18.5) clasificacion = 'Bajo peso';
+      else if (imc < 24.9) clasificacion = 'Peso normal';
+      else if (imc < 29.9) clasificacion = 'Sobrepeso';
+      else clasificacion = 'Obesidad';
+
+      resultado.textContent = `Tu IMC es ${imc.toFixed(2)} - ${clasificacion}`;
+    }
+  </script>
+
+</body>
+</html>
